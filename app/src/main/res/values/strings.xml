@@ -5,4 +5,12 @@
     <string name="cityTour">City Tours</string>
     <string name="winterSports">Winter Sports</string>
     <string name="walkingTours">Walking Tours</string>
+
+    <string name="busTour1">Chamonix and Mont Blanc</string>
+    <string name="busTour2">Lake Como</string>
+    <string name="busTour3">Mount Titlis</string>
+    <string name="busTour4">Zurich Sightseeing</string>
+    <string name="busTour5">Bernina Express Tour Swiss Alps</string>
+
+
 </resources>
