@@ -12,7 +12,31 @@ object CityData {
                 id = 1,
                 titleResourceId =R.string.busTour ,
                 imageResourceId = R.drawable.todo1
+           ),
+
+            ToDo(
+                id = 2,
+                titleResourceId =R.string.dayTrips ,
+                imageResourceId = R.drawable.todo2
+        ),
+            ToDo(
+                id = 3,
+                titleResourceId =R.string.cityTour ,
+                imageResourceId = R.drawable.todo3
+            ),
+
+            ToDo(
+                id = 4,
+                titleResourceId =R.string.walkingTours ,
+                imageResourceId = R.drawable.todo4
+            ),ToDo(
+                id = 5,
+                titleResourceId =R.string.winterSports ,
+                imageResourceId = R.drawable.todo5
             )
+
+
+
         )
     }
 }

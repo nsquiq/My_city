@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">My_cITY</string>
-    <string name="busTour">Bus Tour</string>
+    <string name="busTour">Bus Tours</string>
+    <string name="dayTrips">Day Trips</string>
+    <string name="cityTour">City Tours</string>
+    <string name="winterSports">Winter Sports</string>
+    <string name="walkingTours">Walking Tours</string>
 </resources>

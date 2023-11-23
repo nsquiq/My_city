@@ -2,6 +2,7 @@ package com.example.my_city.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 
 
 import androidx.compose.foundation.layout.Row
@@ -9,11 +10,14 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -102,4 +106,31 @@ fun ToDoListItemPreview(){
         ToDoListItem(toDo = CityData.defaultCity)
     }
     
+}
+
+@Composable
+private fun ToDoList(
+    todos:List<ToDo>,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+    modifier: Modifier = Modifier
+
+){
+    LazyColumn(){
+        items(todos, key = { toDo ->toDo.id}){toDo ->
+            ToDoListItem(toDo = toDo)
+
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ToDoListPreview(){
+    My_cITYTheme {
+        Surface{
+            ToDoList(
+                todos = CityData.getCityData()
+            )
+        }
+    }
 }
