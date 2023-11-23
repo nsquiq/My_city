@@ -11,28 +11,55 @@ object CityData {
             ToDo(
                 id = 1,
                 titleResourceId =R.string.busTour ,
-                imageResourceId = R.drawable.todo1
+                imageResourceId = R.drawable.todo1,
+                recomend1 = R.string.busTour1,
+                recomend2 = R.string.busTour2,
+                recomend3 = R.string.busTour3,
+                recomend4 = R.string.busTour4,
+                recomend5 = R.string.busTour5,
+
            ),
 
             ToDo(
                 id = 2,
                 titleResourceId =R.string.dayTrips ,
-                imageResourceId = R.drawable.todo2
+                imageResourceId = R.drawable.todo2,
+                        recomend1 = R.string.busTour1,
+                recomend2 = R.string.busTour2,
+                recomend3 = R.string.busTour3,
+                recomend4 = R.string.busTour4,
+                recomend5 = R.string.busTour5,
         ),
             ToDo(
                 id = 3,
                 titleResourceId =R.string.cityTour ,
-                imageResourceId = R.drawable.todo3
+                imageResourceId = R.drawable.todo3,
+
+                recomend1 = R.string.busTour1,
+                recomend2 = R.string.busTour2,
+                recomend3 = R.string.busTour3,
+                recomend4 = R.string.busTour4,
+                recomend5 = R.string.busTour5,
             ),
 
             ToDo(
                 id = 4,
                 titleResourceId =R.string.walkingTours ,
-                imageResourceId = R.drawable.todo4
+                imageResourceId = R.drawable.todo4,
+                recomend1 = R.string.busTour1,
+                recomend2 = R.string.busTour2,
+                recomend3 = R.string.busTour3,
+                recomend4 = R.string.busTour4,
+                recomend5 = R.string.busTour5,
             ),ToDo(
                 id = 5,
                 titleResourceId =R.string.winterSports ,
-                imageResourceId = R.drawable.todo5
+                imageResourceId = R.drawable.todo5,
+                recomend1 = R.string.busTour1,
+                recomend2 = R.string.busTour2,
+                recomend3 = R.string.busTour3,
+                recomend4 = R.string.busTour4,
+                recomend5 = R.string.busTour5,
             )
 
 
