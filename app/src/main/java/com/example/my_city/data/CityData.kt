@@ -13,10 +13,7 @@ object CityData {
                 titleResourceId =R.string.busTour ,
                 imageResourceId = R.drawable.todo1,
                 subtitleResourceId = R.string.busTour1,
-                recomend2 = R.string.busTour2,
-                recomend3 = R.string.busTour3,
-                recomend4 = R.string.busTour4,
-                recomend5 = R.string.busTour5,
+
 
            ),
 
@@ -25,10 +22,7 @@ object CityData {
                 titleResourceId =R.string.dayTrips ,
                 imageResourceId = R.drawable.todo2,
                         subtitleResourceId = R.string.dayTrips1,
-                recomend2 = R.string.dayTrips2,
-                recomend3 = R.string.dayTrips3,
-                recomend4 = R.string.dayTrips4,
-                recomend5 = R.string.dayTrips5,
+
         ),
             ToDo(
                 id = 3,
@@ -36,10 +30,7 @@ object CityData {
                 imageResourceId = R.drawable.todo3,
 
                 subtitleResourceId = R.string.cityTour1,
-                recomend2 = R.string.cityTour2,
-                recomend3 = R.string.cityTour3,
-                recomend4 = R.string.cityTour4,
-                recomend5 = R.string.cityTour5,
+
             ),
 
             ToDo(
@@ -47,19 +38,13 @@ object CityData {
                 titleResourceId =R.string.walkingTours ,
                 imageResourceId = R.drawable.todo4,
                 subtitleResourceId = R.string.walkingTours1,
-                recomend2 = R.string.walkingTours2,
-                recomend3 = R.string.walkingTours3,
-                recomend4 = R.string.walkingTours4,
-                recomend5 = R.string.walkingTours5,
+
             ),ToDo(
                 id = 5,
                 titleResourceId =R.string.winterSports ,
                 imageResourceId = R.drawable.todo5,
                 subtitleResourceId = R.string.winterSports1,
-                recomend2 = R.string.winterSports2,
-                recomend3 = R.string.winterSports3,
-                recomend4 = R.string.winterSports4,
-                recomend5 = R.string.winterSports5,
+
             )
 
 

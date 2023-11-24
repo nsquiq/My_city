@@ -17,7 +17,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -44,6 +46,7 @@ import com.example.my_city.model.ToDo
 import com.example.my_city.ui.theme.My_cITYTheme
 import com.example.my_city.ui.utils.ContentType
 import androidx.compose.material3.Scaffold
+import androidx.compose.ui.tooling.preview.Devices
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,6 +75,21 @@ fun CityApp(
             )
         }
     ){ innerPadding ->
+        if(contentType == ContentType.ListAndDetail){
+            RecomendationAndList(
+                todos = uiState.toDoList,
+                selectedToDo = uiState.currentToDo,
+                
+                onClick = {
+                    viewModel.updateCurrentToDo(it)
+                },
+                onBackPressed = onBackPressed,
+                contentPadding = innerPadding,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    
+            )
+        }else{
 
 
         if(uiState.isShowingListPage){
@@ -79,7 +97,8 @@ fun CityApp(
                 onClick = {
                     viewModel.updateCurrentToDo(it)
                     viewModel.navigateToDetailPage()
-                })
+                },
+                contentPadding = innerPadding,)
 
         }else {
             Recomendations(
@@ -91,7 +110,7 @@ fun CityApp(
             )
         }
     }
-}
+}}
 
 
 
@@ -131,6 +150,8 @@ private fun ToDoListItem(
     modifier: Modifier = Modifier
 ){
     Card(
+        elevation = CardDefaults.cardElevation(),
+        modifier = modifier,
         shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius)),
         onClick = { onItemClick(toDo)}
     ){
@@ -192,7 +213,10 @@ private fun ToDoList(
     modifier: Modifier = Modifier
 
 ){
-    LazyColumn(){
+    LazyColumn(
+        contentPadding = contentPadding,
+        modifier = modifier,
+    ){
         items(todos, key = { toDo ->toDo.id}){toDo ->
             ToDoListItem(
                 toDo = toDo,
@@ -232,31 +256,60 @@ private fun Recomendations(
     val layoutDirection = LocalLayoutDirection.current
 
 
-
+Box(
+    modifier = modifier.verticalScroll(state = scrollState)
+)
+{
     Text(
-        text = stringResource(selectedToDo.titleResourceId),
+        text = stringResource(selectedToDo.subtitleResourceId),
         style = MaterialTheme.typography.headlineLarge,
-        color = MaterialTheme.colorScheme.onSurface, // You can adjust the color based on your theme
+        color = MaterialTheme.colorScheme.inverseOnSurface,
         modifier = Modifier
-    )
-    Text(
-        text = stringResource(selectedToDo.recomend2),
-        color = MaterialTheme.colorScheme.onSurface
-    )
-    Text(
-        text = stringResource(selectedToDo.recomend3),
-        color = MaterialTheme.colorScheme.onSurface
-    )
-    Text(
-        text = stringResource(selectedToDo.recomend4),
-        color = MaterialTheme.colorScheme.onSurface
-    )
-    Text(
-        text = stringResource(selectedToDo.recomend5),
-        color = MaterialTheme.colorScheme.onSurface
-    )
+              )
 
 
 }
+}
 
+@Composable
+private fun RecomendationAndList(
+    todos: List<ToDo>,
+    selectedToDo: ToDo,
+    onClick: (ToDo) -> Unit,
+    onBackPressed: () -> Unit,
+    modifier:Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+){
+    Row(
+        modifier = modifier
+    ){
+        ToDoList(
+            todos = todos,
+            onClick = onClick,
+            contentPadding = contentPadding,
+            modifier = Modifier.weight(2f)
+                )
+        Recomendations(
+            selectedToDo = selectedToDo,
+            onBackPressed = onBackPressed,
+            contentPadding = contentPadding)
+    }
+}
+
+@Preview(device = Devices.TABLET)
+@Composable
+fun RecomendationsAndListPreview(){
+    My_cITYTheme {
+        Surface{
+            RecomendationAndList(
+                todos = CityData.getCityData(),
+                selectedToDo = CityData.getCityData().getOrElse(0){
+                                                                  CityData.defaultCity
+                }
+                ,
+                onClick = {},
+                onBackPressed = { })
+        }
+    }
+}
 
