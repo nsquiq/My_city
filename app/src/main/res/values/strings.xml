@@ -12,5 +12,28 @@
     <string name="busTour4">Zurich Sightseeing</string>
     <string name="busTour5">Bernina Express Tour Swiss Alps</string>
 
+    <string name="dayTrips1">Christmas across the 3 borders</string>
+    <string name="dayTrips2">Self-guided Trip from Lucerne</string>
+    <string name="dayTrips3">Swiss Alps Bernina Express Rail Tour from Milan</string>
+    <string name="dayTrips4">Chamonix Mont Blanc Private Day</string>
+    <string name="dayTrips5">Mount Rigi Day Pass </string>
 
+    <string name = "cityTour1">Mount Pilatus Summer Day</string>
+    <string name = "cityTour2">Zurich City Tour Expersience</string>
+    <string name = "cityTour3">Heidiland and Liechtension</string>
+    <string name = "cityTour4">Tour in Come,Lugano,Bellagio,Milan</string>
+    <string name = "cityTour5">2-hour Private Guided Zurich</string>
+
+
+    <string name="winterSports1">Swiss Alps Day Trip from Zurish</string>
+    <string name="winterSports2">Chamonix and Mont Blanc Day</string>
+    <string name="winterSports3">Lake Como,Bellagio</string>
+    <string name="winterSports4">Mount Titlis and Lucerne Day Tour</string>
+    <string name="winterSports5">Zurich Sightseeng With Lake Cruise</string>
+
+    <string name="walkingTours1">Mount Titlis and Lucerne Day Tour</string>
+    <string name="walkingTours2">Geneve 3-hour Chocolate Testing Tour</string>
+    <string name="walkingTours3">Mount Pilatuse Summit form Lucerne</string>
+    <string name="walkingTours4">Grindelwald and Interlaken Independant Day</string>
+    <string name="walkingTours5">2- hour Private Guided Zurish Downtown Tour</string>
 </resources>
