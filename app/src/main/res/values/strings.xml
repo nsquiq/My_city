@@ -8,12 +8,18 @@
     <string name="main.label">Things to Do in Switzerland</string>
     <string name="recomend.label">Recomendations</string>
     <string name="backbutton">Back</string>
+    <string name="inflabel">Information</string>
 
     <string name="busTour1">Chamonix and Mont Blanc</string>
     <string name="busTour2">Lake Como</string>
     <string name="busTour3">Mount Titlis</string>
     <string name="busTour4">Zurich Sightseeing</string>
     <string name="busTour5">Bernina Express Tour Swiss Alps</string>
+    <string name="busTour1inf">Mont Blanc is the highest peak in the Alps, and this customizable tour lets you experience it from all angles on a day trip from Geneva. Choose from a range of options including exploring Chamonix and Mont Blanc independently, riding the cogwheel railway to Montenvers, and soaring to the summit of Aiguille du Midi on the cable car.</string>
+    <string name="busTour2inf">Swap the hustle and bustle of Milan for a luxurious day trip to Lake Como, Bellagio. Avoid the hassle of planning car rental, and travel on air-conditioned coach instead. The trip includes a walking tour in Como, a visit to the majestic Villa Olmo, a private boat tour to Bellagio.</string>
+    <string name="busTour3inf">Mt. Titlis lives up to its hype as one of Switzerlands top destinations, and a guided day trip is the easiest way to see it from Zurich. Travel by coach and panoramic cable car to the summit without worrying about navigation or organizing tickets. Activity fees and a stop in Lucerne are included, and a skiing option is available in winter. Plus, photo stops at scenic spots break up the long journey.</string>
+    <string name="busTour4inf">Zurich is known for its many sights, but navigating them all on your own can be tricky. Find your way around Switzerland’s biggest city with ease on this half-day tour and discover top attractions including Bahnhofstrasse, the Old Town, and Lake Zurich, before widening your perspective on an included boat tour, Lindt Home of Chocolate visit and tasting.</string>
+    <string name="busTour5inf">Travel to the highest point reachable by train in Europe on this full-day tour of the Swiss Alps and Saint Moritz, a luxury alpine resort town in Switzerland’s Engadin Valley. After some free time in Saint Moritz for shopping or pastry tastings (own expense), hop aboard the Bernina Express Red Train for a cliff-hanging 2.5-hour ride through the Alps—on a route with UNESCO World Heritage status.</string>
 
     <string name="dayTrips1">Christmas across the 3 borders</string>
     <string name="dayTrips2">Self-guided Trip from Lucerne</string>

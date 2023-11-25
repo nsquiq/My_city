@@ -17,4 +17,6 @@ data class ToDo(
     @StringRes val subtitleResourceId4: Int,
     @StringRes val subtitleResourceId5: Int,
 
+    @StringRes val titleResourceId1: Int
+
 )

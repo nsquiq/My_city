@@ -17,6 +17,7 @@ object CityData {
                 subtitleResourceId3 = R.string.busTour3,
                 subtitleResourceId4 = R.string.busTour4,
                 subtitleResourceId5 = R.string.busTour5,
+                titleResourceId1 = R.string.busTour1inf
 
 
            ),
@@ -30,6 +31,7 @@ object CityData {
                 subtitleResourceId3 = R.string.dayTrips3,
                 subtitleResourceId4 =  R.string.dayTrips4,
                 subtitleResourceId5 = R.string.dayTrips5,
+                titleResourceId1 = R.string.busTour2inf
 
         ),
             ToDo(
@@ -42,6 +44,7 @@ object CityData {
                 subtitleResourceId3 = R.string.cityTour3,
                 subtitleResourceId4 =  R.string.cityTour4,
                 subtitleResourceId5 = R.string.cityTour5,
+                titleResourceId1 = R.string.busTour3inf
 
             ),
 
@@ -54,6 +57,7 @@ object CityData {
                 subtitleResourceId3 = R.string.walkingTours3,
                 subtitleResourceId4 =  R.string.walkingTours4,
                 subtitleResourceId5 = R.string.walkingTours5,
+                titleResourceId1 = R.string.busTour4inf
 
             ),ToDo(
                 id = 5,
@@ -64,6 +68,7 @@ object CityData {
                 subtitleResourceId3 = R.string.winterSports3,
                 subtitleResourceId4 =  R.string.winterSports4,
                 subtitleResourceId5 = R.string.winterSports5,
+                        titleResourceId1 = R.string.busTour5inf
 
             )
 

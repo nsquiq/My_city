@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -57,6 +58,7 @@ import com.example.my_city.ui.utils.ContentType
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -89,7 +91,9 @@ fun CityApp(
                 onBackButtonClick = { viewModel.navigateToListPage()},
                 windowSize = windowSize
             )
-        }
+        },
+
+
     ){ innerPadding ->
         if(contentType == ContentType.ListAndDetail){
             RecomendationAndList(
@@ -122,7 +126,7 @@ fun CityApp(
             Informations(
                 selectedToDo = uiState.currentToDo,
                 onBackPressed = {  viewModel.navigateToListPage()},
-                contentPadding = innerPadding )
+                contentPadding = innerPadding)
         }
 
 
@@ -147,6 +151,8 @@ fun CityApp(
 
 
 
+
+
 @SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -157,19 +163,33 @@ fun CityAppBar(
     modifier: Modifier = Modifier
 ){
     val isShowingDetailPage = windowSize != WindowWidthSizeClass.Expanded && !isShowingListPage
-
+    val isShowingInfPage = !isShowingListPage && !isShowingDetailPage
         TopAppBar(
             title ={
                 Text(
                     text =
                         if(isShowingDetailPage){
                             stringResource(R.string.recomend_label)
-                        }else{
+                        }
+                        else if(isShowingInfPage){
+                            stringResource(R.string.inflabel)
+                        }
+                        else{
                             stringResource(R.string.main_label)
                         }
                 )
             },
             navigationIcon = if (isShowingDetailPage){
+                {
+                    IconButton(onClick = onBackButtonClick) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.backbutton)
+
+                        )
+                    }
+                } }
+                else if(isShowingInfPage){
                 {
                     IconButton(onClick = onBackButtonClick) {
                         Icon(
@@ -186,7 +206,9 @@ fun CityAppBar(
                     containerColor = MaterialTheme.colorScheme.primary
                 ),
                 modifier = modifier,
-                )
+
+
+        )
 
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -347,16 +369,17 @@ private fun Recomendations(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier
 ){
+
     BackHandler {
         onBackPressed()
     }
     val scrollState = rememberScrollState()
     val layoutDirection = LocalLayoutDirection.current
 
-
+    Text(text = "hscfnsgngggghc")
     Column(
         modifier = modifier
-           .verticalScroll(state = scrollState)
+            .verticalScroll(state = scrollState)
             .padding(16.dp)
     ) {
         Card(
@@ -379,6 +402,12 @@ private fun Recomendations(
 
 
         )}
+        Card(
+            elevation = CardDefaults.cardElevation(),
+            modifier = modifier,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius)),
+            onClick = { onClick(selectedToDo)},
+        ){
         Text(
             text = stringResource(selectedToDo.subtitleResourceId2),
 
@@ -389,7 +418,13 @@ private fun Recomendations(
                 .width(300.dp)
                 .clip(RoundedCornerShape(8.dp))
                 .padding(16.dp)
-        )
+        )}
+        Card(
+            elevation = CardDefaults.cardElevation(),
+            modifier = modifier,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius)),
+            onClick = { onClick(selectedToDo)},
+        ){
         Text(
             text = stringResource(selectedToDo.subtitleResourceId3),
 
@@ -400,7 +435,13 @@ private fun Recomendations(
                 .width(300.dp)
                 .clip(RoundedCornerShape(8.dp))
                 .padding(16.dp)
-        )
+        )}
+        Card(
+            elevation = CardDefaults.cardElevation(),
+            modifier = modifier,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius)),
+            onClick = { onClick(selectedToDo)},
+        ){
         Text(
             text = stringResource(selectedToDo.subtitleResourceId4),
 
@@ -411,7 +452,13 @@ private fun Recomendations(
                 .width(300.dp)
                 .clip(RoundedCornerShape(8.dp))
                 .padding(16.dp)
-        )
+        )}
+        Card(
+            elevation = CardDefaults.cardElevation(),
+            modifier = modifier,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius)),
+            onClick = { onClick(selectedToDo)},
+        ){
         Text(
             text = stringResource(selectedToDo.subtitleResourceId5),
 
@@ -423,7 +470,7 @@ private fun Recomendations(
                 .clip(RoundedCornerShape(8.dp))
                 .padding(16.dp)
         )
-    }
+    }}
 }
 @Composable
 private fun Informations(
@@ -446,7 +493,7 @@ private fun Informations(
             .padding(16.dp)
     ) {
         Text(
-            text = stringResource(selectedToDo.titleResourceId),
+            text = stringResource(selectedToDo.titleResourceId1),
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier
                 .padding(8.dp)
