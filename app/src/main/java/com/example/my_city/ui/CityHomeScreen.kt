@@ -58,12 +58,17 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Devices
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CityApp(
+
     windowSize: WindowWidthSizeClass,
-    onBackPressed: () -> Unit
+    onBackPressed: () -> Unit,
+
 ){
     val viewModel: CityViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
@@ -90,6 +95,7 @@ fun CityApp(
             RecomendationAndList(
                 todos = uiState.toDoList,
                 selectedToDo = uiState.currentToDo,
+
                 
                 onClick = {
                     viewModel.updateCurrentToDo(it)
@@ -109,13 +115,13 @@ fun CityApp(
                     viewModel.updateCurrentToDo(it)
                     viewModel.navigateToDetailPage()
                 },
-                contentPadding = innerPadding,)
+               contentPadding = innerPadding,)
 
         }
         else if(uiState.isShowingInfPage){
             Informations(
                 selectedToDo = uiState.currentToDo,
-                onBackPressed = { viewModel.navigateToInfPage() },
+                onBackPressed = {  viewModel.navigateToListPage()},
                 contentPadding = innerPadding )
         }
 
@@ -128,7 +134,11 @@ fun CityApp(
                 contentPadding = innerPadding,
                 onBackPressed = {
                     viewModel.navigateToListPage()
+                },
+                onClick = {
+                    viewModel.navigateToInfPage()
                 }
+
             )
         }
     }
@@ -288,6 +298,7 @@ private fun RecomendationAndList(
     onClick: (ToDo) -> Unit,
     onBackPressed: () -> Unit,
     modifier:Modifier = Modifier,
+
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ){
     Row(
@@ -302,7 +313,9 @@ private fun RecomendationAndList(
         Recomendations(
             selectedToDo = selectedToDo,
             onBackPressed = onBackPressed,
-            contentPadding = contentPadding)
+            contentPadding = contentPadding,
+            onClick = onClick,
+            )
 
 
     }
@@ -320,15 +333,17 @@ fun RecomendationsAndListPreview(){
                 }
                 ,
                 onClick = {},
-                onBackPressed = { })
+                onBackPressed = { },
+            )
         }
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Recomendations(
     selectedToDo: ToDo,
     onBackPressed: () -> Unit,
-
+    onClick:(ToDo)->Unit,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier
 ){
@@ -341,14 +356,21 @@ private fun Recomendations(
 
     Column(
         modifier = modifier
-            .verticalScroll(state = scrollState)
+           .verticalScroll(state = scrollState)
             .padding(16.dp)
     ) {
+        Card(
+            elevation = CardDefaults.cardElevation(),
+            modifier = modifier,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius)),
+            onClick = { onClick(selectedToDo)},
+        ){
         Text(
             text = stringResource(selectedToDo.subtitleResourceId),
             color = MaterialTheme.colorScheme.primary,
 
             modifier = Modifier
+
                 .padding(8.dp)
                 .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
                 .width(300.dp)
@@ -356,7 +378,7 @@ private fun Recomendations(
                 .padding(16.dp)
 
 
-        )
+        )}
         Text(
             text = stringResource(selectedToDo.subtitleResourceId2),
 

@@ -12,6 +12,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.my_city.ui.CityApp
 import com.example.my_city.ui.theme.My_cITYTheme
 
@@ -27,7 +28,8 @@ class MainActivity : ComponentActivity() {
 
                     CityApp(
                         windowSize = windowSize.widthSizeClass,
-                        onBackPressed = { finish()}
+                        onBackPressed = { finish()},
+
                     )
                 }
             }
