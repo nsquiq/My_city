@@ -5,6 +5,9 @@
     <string name="cityTour">City Tours</string>
     <string name="winterSports">Winter Sports</string>
     <string name="walkingTours">Walking Tours</string>
+    <string name="main.label">Things to Do in Switzerland</string>
+    <string name="recomend.label">Recomendations</string>
+    <string name="backbutton">Back</string>
 
     <string name="busTour1">Chamonix and Mont Blanc</string>
     <string name="busTour2">Lake Como</string>

@@ -38,13 +38,20 @@ class CityViewModel : ViewModel() {
 
     fun navigateToDetailPage() {
         _uiState.update {
-            it.copy(isShowingListPage = false)
-        }
+            it.copy(isShowingListPage = false ,isShowingInfPage = false)
+
     }
 }
+    fun navigateToInfPage(){
+        _uiState.update{
+            it.copy(isShowingInfPage = true)
+        }
+
+    }    }
 
 data class CityUiState(
     val toDoList: List<ToDo> = emptyList(),
     val currentToDo: ToDo = CityData.defaultCity,
-    val isShowingListPage: Boolean = true
+    val isShowingListPage: Boolean = true,
+    val isShowingInfPage: Boolean = true
 )

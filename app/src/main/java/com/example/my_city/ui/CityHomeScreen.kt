@@ -4,23 +4,32 @@ import android.annotation.SuppressLint
 import android.graphics.pdf.PdfDocument.Page
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -46,6 +55,8 @@ import com.example.my_city.model.ToDo
 import com.example.my_city.ui.theme.My_cITYTheme
 import com.example.my_city.ui.utils.ContentType
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Devices
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -100,7 +111,18 @@ fun CityApp(
                 },
                 contentPadding = innerPadding,)
 
-        }else {
+        }
+        else if(uiState.isShowingInfPage){
+            Informations(
+                selectedToDo = uiState.currentToDo,
+                onBackPressed = { viewModel.navigateToInfPage() },
+                contentPadding = innerPadding )
+        }
+
+
+
+        else
+         {
             Recomendations(
                 selectedToDo = uiState.currentToDo,
                 contentPadding = innerPadding,
@@ -131,16 +153,31 @@ fun CityAppBar(
                 Text(
                     text =
                         if(isShowingDetailPage){
-                            stringResource(R.string.busTour2)
+                            stringResource(R.string.recomend_label)
                         }else{
-                            stringResource(R.string.busTour)
+                            stringResource(R.string.main_label)
                         }
                 )
-            }
+            },
+            navigationIcon = if (isShowingDetailPage){
+                {
+                    IconButton(onClick = onBackButtonClick) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.backbutton)
 
+                        )
+                    }
+                } }
+                else{
+                    {Box {}}
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                ),
+                modifier = modifier,
+                )
 
-
-        )
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -241,35 +278,8 @@ fun ToDoListPreview(){
     }
 }
 
-@Composable
-private fun Recomendations(
-    selectedToDo: ToDo,
-    onBackPressed: () -> Unit,
-
-    contentPadding: PaddingValues,
-    modifier: Modifier = Modifier
-){
-    BackHandler {
-        onBackPressed()
-    }
-    val scrollState = rememberScrollState()
-    val layoutDirection = LocalLayoutDirection.current
 
 
-Box(
-    modifier = modifier.verticalScroll(state = scrollState)
-)
-{
-    Text(
-        text = stringResource(selectedToDo.subtitleResourceId),
-        style = MaterialTheme.typography.headlineLarge,
-        color = MaterialTheme.colorScheme.inverseOnSurface,
-        modifier = Modifier
-              )
-
-
-}
-}
 
 @Composable
 private fun RecomendationAndList(
@@ -288,11 +298,13 @@ private fun RecomendationAndList(
             onClick = onClick,
             contentPadding = contentPadding,
             modifier = Modifier.weight(2f)
-                )
+               )
         Recomendations(
             selectedToDo = selectedToDo,
             onBackPressed = onBackPressed,
             contentPadding = contentPadding)
+
+
     }
 }
 
@@ -312,4 +324,117 @@ fun RecomendationsAndListPreview(){
         }
     }
 }
+@Composable
+private fun Recomendations(
+    selectedToDo: ToDo,
+    onBackPressed: () -> Unit,
+
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier
+){
+    BackHandler {
+        onBackPressed()
+    }
+    val scrollState = rememberScrollState()
+    val layoutDirection = LocalLayoutDirection.current
+
+
+    Column(
+        modifier = modifier
+            .verticalScroll(state = scrollState)
+            .padding(16.dp)
+    ) {
+        Text(
+            text = stringResource(selectedToDo.subtitleResourceId),
+            color = MaterialTheme.colorScheme.primary,
+
+            modifier = Modifier
+                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
+                .width(300.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .padding(16.dp)
+
+
+        )
+        Text(
+            text = stringResource(selectedToDo.subtitleResourceId2),
+
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
+                .width(300.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        )
+        Text(
+            text = stringResource(selectedToDo.subtitleResourceId3),
+
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
+                .width(300.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        )
+        Text(
+            text = stringResource(selectedToDo.subtitleResourceId4),
+
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
+                .width(300.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        )
+        Text(
+            text = stringResource(selectedToDo.subtitleResourceId5),
+
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
+                .width(300.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        )
+    }
+}
+@Composable
+private fun Informations(
+    selectedToDo: ToDo,
+    onBackPressed: () -> Unit,
+
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier
+){
+    BackHandler {
+        onBackPressed()
+    }
+    val scrollState = rememberScrollState()
+    val layoutDirection = LocalLayoutDirection.current
+
+
+    Column(
+        modifier = modifier
+            .verticalScroll(state = scrollState)
+            .padding(16.dp)
+    ) {
+        Text(
+            text = stringResource(selectedToDo.titleResourceId),
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(8.dp)
+                .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f))
+                .width(300.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        )
+
+    }
+}
+
 
